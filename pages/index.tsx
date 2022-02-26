@@ -1,12 +1,35 @@
-import type { NextPage } from 'next'
+import type { NextPageContext } from 'next'
 import Layout from '../components/layout'
+import { fetchNewsPage } from '../lib/get-news'
+import { News } from '../types/News';
+import { Page } from '../types/page';
 
-const Home: NextPage = () => {
+export async function getServerSideProps(context: NextPageContext) {
+  const page = 0;
+  const pageSize = 25;
+  const newsPage = await fetchNewsPage({page, pageSize});
+
+  return {
+    props: { newsPage }
+  }
+}
+
+const Home = ({newsPage}: {newsPage: Page<News>}) => {
+  const newsComponents = newsPage.data.map(news => {
+    return (
+      <li key={`news-${news.id}`}>
+        <div className='border-b'>
+          <h2 className='text-2xl'>{news.title}</h2>
+          <p>{`${news.author} from ${news.publishedAt} at ${news.sourceUrl}`}</p>
+          <p>{news.body}</p>
+        </div>
+      </li>
+    )
+  })
+
   return (
     <Layout>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <ul>{newsComponents}</ul>
     </Layout>
   )
 }
