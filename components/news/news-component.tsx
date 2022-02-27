@@ -3,7 +3,7 @@ import MediaComponent from "./media-component"
 
 const NewsComponent = ({news} : {news: News}) => {
   const mediaComponents = news.medias.map((media) => {
-    return <MediaComponent key={media.url} url={media.url} mediaType='Image'/>
+    return <MediaComponent key={media.url} url={media.url} mediaType={media.mediaType}/>
   })
 
   return (

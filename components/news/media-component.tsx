@@ -1,15 +1,14 @@
 import Image from 'next/image';
-
-type MediaType = 'Image' | 'Video' | 'Other';
+import { MediaType } from '../../types/News';
 
 const MediaComponent = ({url, mediaType}: {url: string, mediaType: MediaType}) => {
   let media = undefined;
 
   switch(mediaType) {
-    case 'Image':
+    case 'IMAGE':
       media = <Image className='object-none' src={url} width={200} height={200} alt={''}/>
       break;
-    case 'Video':
+    case 'VIDEO':
       //TODO
       break;
     default:

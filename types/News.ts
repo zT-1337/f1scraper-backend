@@ -1,3 +1,5 @@
+export type MediaType = 'IMAGE' | 'VIDEO' | 'OTHER'
+
 export type News = {
   id: number,
   title: string,
@@ -5,5 +7,5 @@ export type News = {
   body: string,
   publishedAt: string,
   sourceUrl: string,
-  medias: {url: string}[],
+  medias: {url: string, mediaType: MediaType}[],
 }
