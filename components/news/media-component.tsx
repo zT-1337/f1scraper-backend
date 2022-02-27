@@ -7,7 +7,7 @@ const MediaComponent = ({url, mediaType}: {url: string, mediaType: MediaType}) =
 
   switch(mediaType) {
     case 'Image':
-      media = <Image className='object-none float-left' src={url} width={200} height={200} alt={''}/>
+      media = <Image className='object-none' src={url} width={200} height={200} alt={''}/>
       break;
     case 'Video':
       //TODO
@@ -18,7 +18,7 @@ const MediaComponent = ({url, mediaType}: {url: string, mediaType: MediaType}) =
   }
 
   return (
-    <div>
+    <div className='inline mr-4'>
       <a href={url}>{media !== undefined && media}</a>
     </div>
   )
