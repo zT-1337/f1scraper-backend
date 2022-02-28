@@ -14,7 +14,7 @@ export async function fetchNewsPage({page, pageSize}: {page: number, pageSize: n
 export function parsePageParam({pageParam, defaultValue}: {pageParam: string, defaultValue: number}): number {
   const page = parseInt(pageParam);
 
-  if(isNaN(page)) {
+  if(isNaN(page) || page < 1) {
     return defaultValue;
   }
 
