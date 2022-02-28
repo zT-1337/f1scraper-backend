@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const PaginationSelector = ({activePage, totalPage, href}: {activePage: number, totalPage: number, href: string}) => {
   const pages: JSX.Element[] = getPagination({activePage, totalPage, href});
-
+  
   return (
     <div className='btn-group'>
       {pages}

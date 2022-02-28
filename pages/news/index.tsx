@@ -26,6 +26,9 @@ const PaginatedNews = ({newsPage}: {newsPage: Page<News>}) => {
   return (
     <Layout>
       <div>
+        <div className="flex justify-center items-center">
+          <PaginationSelector activePage={newsPage.page+1} totalPage={newsPage.pageCount} href='/news'/>
+        </div>
         {newsComponents}
         <div className="flex justify-center items-center">
           <PaginationSelector activePage={newsPage.page+1} totalPage={newsPage.pageCount} href='/news'/>
