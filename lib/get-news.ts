@@ -10,3 +10,13 @@ export async function fetchNewsPage({page, pageSize}: {page: number, pageSize: n
   const respone = await fetch(url);
   return await respone.json();
 }
+
+export function parsePageParam({pageParam, defaultValue}: {pageParam: string, defaultValue: number}): number {
+  const page = parseInt(pageParam);
+
+  if(isNaN(page)) {
+    return defaultValue;
+  }
+
+  return page;
+}
