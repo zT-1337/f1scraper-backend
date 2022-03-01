@@ -3,13 +3,14 @@ import Layout from "../../components/layout/layout"
 import PaginatedNewsElement from "../../components/news/paginated-news-element";
 import PaginationSelector from "../../components/pagination/pagination-selector";
 import { fetchNewsPage, parsePageParam } from "../../lib/get-news";
-import { News } from "../../types/News";
+import { News, NewsStatus } from "../../types/News";
 import { Page } from "../../types/page";
 
 export async function getServerSideProps(context: NextPageContext) {
   let page = parsePageParam({pageParam: context.query.page as string, defaultValue: 1}) - 1;
   const pageSize = 25;
-  let newsPage: Page<News> = await fetchNewsPage({page, pageSize});
+  const newsStatus: NewsStatus = 'UNREAD'
+  let newsPage: Page<News> = await fetchNewsPage({page, pageSize, newsStatus});
 
   return {
     props: {newsPage: newsPage}
