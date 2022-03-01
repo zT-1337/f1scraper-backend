@@ -1,7 +1,6 @@
 import { NextPageContext } from "next"
 import Layout from "../../components/layout/layout"
-import PaginatedNewsElement from "../../components/news/paginated-news-element";
-import PaginationSelector from "../../components/pagination/pagination-selector";
+import PaginatedNews from "../../components/news/paginated-news";
 import { fetchNewsPage, parsePageParam } from "../../lib/get-news";
 import { News, NewsStatus } from "../../types/News";
 import { Page } from "../../types/page";
@@ -17,26 +16,12 @@ export async function getServerSideProps(context: NextPageContext) {
   }
 }
 
-const PaginatedNews = ({newsPage}: {newsPage: Page<News>}) => {
-  const newsComponents = newsPage.data.map(news => {
-    return (
-      <PaginatedNewsElement key={`news-${news.id}`} news={news}/>
-    )
-  })
-
+const UnreadNews = ({newsPage}: {newsPage: Page<News>}) => {
   return (
     <Layout>
-      <div>
-        <div className="flex justify-center items-center">
-          <PaginationSelector activePage={newsPage.page+1} totalPage={newsPage.pageCount} href='/news'/>
-        </div>
-        {newsComponents}
-        <div className="flex justify-center items-center">
-          <PaginationSelector activePage={newsPage.page+1} totalPage={newsPage.pageCount} href='/news'/>
-        </div>
-      </div>
+      <PaginatedNews newsPage={newsPage}/>
     </Layout>
   )
 }
 
-export default PaginatedNews
+export default UnreadNews
