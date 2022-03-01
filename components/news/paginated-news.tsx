@@ -19,6 +19,10 @@ const PaginatedNews = ({newsPage, href}: {newsPage: Page<News>, href: string}) =
       <div className="flex justify-center items-center">
         <PaginationSelector activePage={newsPage.page+1} totalPage={newsPage.pageCount} href={href}/>
       </div>
+      {newsComponents.length === 0 && 
+        <article className='prose max-w-none mx-auto w-3/4'>
+          <h1>No news available here</h1>
+        </article>}
     </div>
   )
 }
