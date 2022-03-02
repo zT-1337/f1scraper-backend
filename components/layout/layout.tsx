@@ -12,6 +12,7 @@ const Layout = ({children}: LayoutProps) => {
         <Link href='/news'><a className="btn btn-ghost normal-case text-xl">News</a></Link>
         <Link href='/old'><a className="btn btn-ghost normal-case text-xl">Read News</a></Link>
         <Link href='/bookmarked'><a className="btn btn-ghost normal-case text-xl">Bookmarked</a></Link>
+        <Link href='/login'><a className="btn btn-ghost normal-case text-xl">Login</a></Link>
       </nav>
       <main className="w-3/4 mx-auto my-4 bg-base-300 p-4">{children}</main>
     </div>
