@@ -8,7 +8,7 @@ import { Page } from '../types/page';
 export async function getServerSideProps(context: NextPageContext) {
   const page = 0;
   const pageSize = 1;
-  const newsPage: Page<News> = await fetchNewsPage({page, pageSize});
+  const newsPage: Page<News> = await fetchNewsPage({page, pageSize, newsStatus: undefined});
 
   return {
     props: { newest: newsPage.data[0] }
