@@ -38,7 +38,7 @@ const NewsComponent = ({news} : {news: News}) => {
     <article className='prose max-w-none mx-auto w-3/4'>
       <h1>{news.title}</h1>
       <h3>{`${news.author} from ${new Date(news.publishedAt).toLocaleDateString('de-DE')}`}</h3>
-      <h4><a href={news.sourceUrl}>{`Source ${news.sourceUrl}`}</a></h4>
+      <h4><a href={news.sourceUrl}>Source</a></h4>
       <p>{news.body}</p>
       <div className='w-full my-4'>
         <NewsStatusButton isSelected={newsState === 'UNREAD'} newsStatus={'UNREAD'} onClick={onNewsStatusButtonClicked}/>
@@ -51,7 +51,7 @@ const NewsComponent = ({news} : {news: News}) => {
 }
 
 const NewsStatusButton = ({isSelected, newsStatus, onClick}: {isSelected: boolean, newsStatus: NewsStatus, onClick: (newsStatus: NewsStatus) => void}) => {
-  let classNames = 'btn mr-4';
+  let classNames = 'btn mb-4 block sm:inline sm:mr-4';
 
   if(isSelected) {
     classNames += ' btn-primary';
